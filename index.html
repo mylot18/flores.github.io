@@ -1,0 +1,174 @@
+<html>
+  <head>
+    <title>Bakugou</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Contenedor principal que incluye fondo e interior */
+      #fondo-contenedor {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://i.pinimg.com/1200x/8b/3c/82/8b3c82c7aa9eef7546fbe493c1ad622b.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: opacity 1s ease; /* transición para todo el contenedor */
+      }
+
+      #contenedor {
+        transition: opacity 1s ease;
+        position: relative;
+        z-index: 1; /* encima del fondo */
+      }
+
+      .imagen {
+        border: 10px dashed #27473C;
+        width: 30%;
+        border-radius: 100%;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      td {
+        background-color: rgba(204, 102, 0, 0.8);
+        text-align: center;
+        border-radius: 20px;
+      }
+      input[type="text"] {
+        font-size: 18px;
+        padding: 8px;
+        width: 300px;
+        margin-top: 20px;
+        text-align: center;
+        transition: all 0.8s;
+        border: 2px solid #000;
+        border-radius: 10px;
+      }
+      div[class="imagen"] {
+        margin-left: 40px;
+        margin-top: 20px;
+      }
+      button {
+        font-family: Arial BLACK;
+        font-size: 20px;
+        width: 70px;
+        height: 40px;
+        margin: 10px;
+        background-color: #F5D0B7;
+        color: #27473C;
+        border: none;
+        border-radius: 40%;
+        cursor: pointer;
+      }
+      .teclado {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .contenido {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        margin-top: 30px;
+      }
+      .imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .imagen-principal {
+        width: 800px;
+        height: 200px;
+        margin: 0 auto 20px auto;
+        display: block;
+        border-radius: 20px;
+        object-fit: cover;
+        border: 5px solid #27473C;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenedor que tiene la imagen de fondo -->
+    <div id="fondo-contenedor">
+      <div id="contenedor">
+        <table border="0" align="center" style="width: 800px; height: 450px;">
+          <tr>
+            <td>
+              <img class="imagen-principal" src="https://i.pinimg.com/1200x/75/75/ab/7575ab18292af581272a2b83c1d825aa.jpg" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="contenido">
+                <div class="imagen">
+                  <img src="https://i.pinimg.com/736x/08/de/0f/08de0f626eda208d09bcfed83f0c028a.jpg" />
+                </div>
+
+                <div>
+                  <input type="text" id="pass" name="pass" readonly /><br /><br />
+
+                  <div class="teclado">
+                    <button type="button" onclick="agregar('1')">1</button>
+                    <button type="button" onclick="agregar('2')">2</button>
+                    <button type="button" onclick="agregar('3')">3</button><br />
+                    <button type="button" onclick="agregar('4')">4</button>
+                    <button type="button" onclick="agregar('5')">5</button>
+                    <button type="button" onclick="agregar('6')">6</button><br />
+                    <button type="button" onclick="agregar('7')">7</button>
+                    <button type="button" onclick="agregar('8')">8</button>
+                    <button type="button" onclick="agregar('9')">9</button><br />
+                    <button type="button" onclick="agregar('/')">/</button>
+                    <button type="button" onclick="agregar('0')">0</button>
+                    <button type="button" onclick="verificar()">OK</button>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const campo = document.getElementById("pass");
+      const contenedor = document.getElementById("fondo-contenedor"); // ahora se desvanece todo el contenedor
+
+      function agregar(num) {
+        document.getElementById("pass").value += num;
+      }
+
+      function verificar() {
+        const campoInput = document.getElementById("pass");
+        const claveCorrecta = "20/04";
+        if (campoInput.value === claveCorrecta) {
+          campoInput.style.backgroundColor = "#D0F5D0"; 
+          campoInput.style.borderColor = "#27473C";
+          campoInput.style.color = "#27473C";
+
+          setTimeout(() => {
+            contenedor.style.opacity = 0; // se desvanece TODO: fondo + contenido
+          }, 500);
+
+          setTimeout(() => {
+            window.location.href = "regalo1.html";
+          }, 1500);
+
+        } else {
+          campoInput.value = "Try again";
+          campoInput.style.color = "#cc6600";
+          campoInput.style.fontFamily = "Arial Black, Arial, sans-serif";
+
+          setTimeout(() => {
+            campoInput.value = "";
+            campoInput.style.color = "black";
+          }, 1500);
+        }
+      }
+    </script>
+  </body>
+</html>
